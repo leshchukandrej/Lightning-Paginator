@@ -25,9 +25,11 @@ You can use Paginator even with tables like in this example:
             <!--Rows-->
         </thead>
         <tbody>
+        
         <aura:iteration items="{!v.items}" var="item" indexVar="index">
             <!--Rows-->
         </aura:iteration>
+        
         </tbody>
     </table>
 
