@@ -35,4 +35,4 @@ You can use Paginator even with tables like in this example:
 
 </c:Paginator>
 ```
-[https://github.com/leshchukandrej/Lightning-Paginator/blob/master/Paginator.png]
+[![Paginator](https://github.com/leshchukandrej/Lightning-Paginator/blob/master/Paginator.png)](https://github.com/leshchukandrej/Lightning-Paginator/blob/master/Paginator.png)
