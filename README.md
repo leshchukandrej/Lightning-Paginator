@@ -34,5 +34,5 @@ You can use Paginator even with tables like in this example:
     </table>
 
 </c:Paginator>
-
+```
 [[https://github.com/leshchukandrej/Lightning-Paginator/blob/master/Paginator.png|alt=Paginator]]
