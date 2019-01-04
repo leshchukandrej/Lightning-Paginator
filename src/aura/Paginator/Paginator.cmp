@@ -1,0 +1,64 @@
+<!--
+ - Created by ctuser on 02.01.2019.
+ -->
+
+<aura:component description="PaginationV3">
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+    <aura:handler name="change" value="{!v.elementsPerPage}" action="{!c.validateElementsPerPage}"/>
+
+    <aura:attribute name="iterator" type="Aura.Component" access="private"/>
+
+    <aura:attribute name="currentPage" type="Integer" access="private" default="1"/>
+    <aura:attribute name="pages" type="Integer" access="private" default="1"/>
+
+    <aura:attribute name="elementsPerPage" type="Integer" access="public"/>
+
+        {!v.body}
+
+    <lightning:slider variant="label-hidden" label="Pages" class="" value="{!v.currentPage}" min="1" max="{!v.pages}" onchange="{!c.goToSpecificPage}" step="1"/>
+
+    <lightning:layout horizontalAlign="center" multipleRows="true">
+
+        <lightning:layoutItem>
+
+            <lightning:buttonGroup>
+
+                <lightning:button label="First" onclick="{!c.goToFirstPage}"/>
+
+            </lightning:buttonGroup>
+
+            <lightning:buttonGroup>
+
+                <lightning:button onclick="{!c.goToPreviousPage}">
+
+                    <div class="slds-flip--horizontal">
+                        &#10148;
+                    </div>
+
+                </lightning:button>
+
+                <div class="slds-button slds-button--neutral">
+
+                {!v.currentPage} of {!v.pages}
+
+                </div>
+
+                <lightning:button onclick="{!c.goToNextPage}">
+                    &#10148;
+                </lightning:button>
+
+            </lightning:buttonGroup>
+
+            <lightning:buttonGroup>
+
+                <lightning:button label="Last" onclick="{!c.goToLastPage}"/>
+
+            </lightning:buttonGroup>
+
+        </lightning:layoutItem>
+
+    </lightning:layout>
+
+</aura:component>
