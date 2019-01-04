@@ -7,7 +7,7 @@ Example of using this component:
 
           <aura:iteration items="{!v.accounts}" var="account" indexVar="i">
 
-                    <--Your body-->
+                    <!--Your body-->
                                           
           </aura:iteration>
           
