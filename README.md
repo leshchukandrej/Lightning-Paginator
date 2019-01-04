@@ -32,4 +32,4 @@ You can use Paginator even with tables like in this example:
     </table>
 
 </c:Paginator>
-'''
+
