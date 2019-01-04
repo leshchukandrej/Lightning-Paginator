@@ -10,5 +10,6 @@ Example of using this component:
                     <--Your body-->
                                           
           </aura:iteration>
-```
+          
 </c:Paginator>
+```
