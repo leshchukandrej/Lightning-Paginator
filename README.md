@@ -9,12 +9,13 @@ Example of using this component:
 
           <aura:iteration items="{!v.accounts}" var="account" indexVar="i">
 
-                    <!--Your body-->
-                                          
+                    <c:AccountRecord account="{!account}"/>
+ 
           </aura:iteration>
           
 </c:Paginator>
 ```
+[![Paginator](https://github.com/leshchukandrej/Lightning-Paginator/blob/master/Paginator.png)](https://github.com/leshchukandrej/Lightning-Paginator/blob/master/Paginator.png)
 
 You can use Paginator even with tables like in this example:
 ```
@@ -35,4 +36,4 @@ You can use Paginator even with tables like in this example:
 
 </c:Paginator>
 ```
-[![Paginator](https://github.com/leshchukandrej/Lightning-Paginator/blob/master/Paginator.png)](https://github.com/leshchukandrej/Lightning-Paginator/blob/master/Paginator.png)
+
