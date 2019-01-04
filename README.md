@@ -35,3 +35,4 @@ You can use Paginator even with tables like in this example:
 
 </c:Paginator>
 
+![alt text](https://raw.githubusercontent.com/leshchukandrej/Lightning-Paginator/branch/path/to/img.png)
