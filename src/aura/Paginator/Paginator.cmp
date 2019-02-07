@@ -17,6 +17,8 @@
 
         {!v.body}
 
+    <div class="{!v.iterator ? '' : 'slds-hide'}">
+
     <lightning:slider variant="label-hidden" label="Pages" class="" value="{!v.currentPage}" min="1" max="{!v.pages}" onchange="{!c.goToSpecificPage}" step="1"/>
 
     <lightning:layout horizontalAlign="center" multipleRows="true">
@@ -60,5 +62,7 @@
         </lightning:layoutItem>
 
     </lightning:layout>
+
+    </div>
 
 </aura:component>

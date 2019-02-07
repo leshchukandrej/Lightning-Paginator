@@ -4,51 +4,47 @@
 ({
 
     getIterator: function (items) {
-        debugger
-        // if (items) {
-
-            if (!Array.isArray(items)) {
-                if (items.isInstanceOf('aura:iteration')) {
-                    return items;
-                }
+        if (!Array.isArray(items)) {
+            if (items.isInstanceOf('aura:iteration')) {
+                return items;
             }
-            var iterator;
-            for (var i = 0; i < items.length; i++) {
-                var child = items[i];
-                if (child) {
-                    if (child.isInstanceOf("aura:iteration")) {
-                        return child;
-                    } else if (!child.isInstanceOf("aura:expression")) {
-                        if (child.get("v.body")) {
-                            iterator = this.getIterator(child.get("v.body"));
-                        }
-                    } else if (child.isInstanceOf("aura:expression")) {
-                        if (child.get("v.value")) {
-                            iterator = this.getIterator(child.get("v.value"));
-                        }
+        }
+
+        var iterator;
+
+        for (var i = 0; i < items.length; i++) {
+            var child = items[i];
+            if (child) {
+                if (child.isInstanceOf("aura:iteration")) {
+                    return child;
+                } else if (!child.isInstanceOf("aura:expression")) {
+                    if (child.get("v.body")) {
+                        iterator = this.getIterator(child.get("v.body"));
+                    }
+                } else if (child.isInstanceOf("aura:expression")) {
+                    if (child.get("v.value")) {
+                        iterator = this.getIterator(child.get("v.value"));
                     }
                 }
-                if (iterator) {
-                    return iterator
-                }
             }
-        // }
+            if (iterator) {
+                return iterator
+            }
+        }
     },
 
     recalculatePages: function (component) {
-        debugger
 
         var iterator = component.get('v.iterator');
+        var elementsPerPage = component.get('v.elementsPerPage')
 
-        if (!iterator) {
+        if (!iterator || !elementsPerPage) {
             return
         }
 
-        console.log('recalculatePages')
         var items = iterator.get('v.items');
         var elementsPerPage = component.get('v.elementsPerPage');
         var currentPage = component.get('v.currentPage');
-        var pagesOld = component.get('v.pages');
 
         if (!items || items.length <= elementsPerPage) {
             iterator.set('v.start', 0);
@@ -76,5 +72,27 @@
         component.set('v.pages', pages);
     },
 
+    shiftPage: function(component, shift){
+
+        var nextPage = parseInt(component.get('v.currentPage')) + shift;
+
+        var iterator = component.get('v.iterator');
+
+        if (!iterator) {
+            return
+        }
+
+        var pages = component.get('v.pages');
+        if (nextPage > pages || nextPage < 1) {
+            return
+        }
+
+        var elementsPerPage = component.get('v.elementsPerPage');
+
+        iterator.set('v.start', (nextPage - 1) * elementsPerPage);
+        iterator.set('v.end', nextPage * elementsPerPage);
+
+        component.set('v.currentPage', nextPage);
+    }
 
 })
